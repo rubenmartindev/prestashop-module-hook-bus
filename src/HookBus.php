@@ -62,6 +62,12 @@ class HookBus implements HookBusInterface
      */
     public function dispatch($hookName, array $params = [])
     {
-        return;
+        $handler = $this->getHandler($hookName);
+
+        if (null === $handler) {
+            return;
+        }
+
+        return $handler->handle($params);
     }
 }

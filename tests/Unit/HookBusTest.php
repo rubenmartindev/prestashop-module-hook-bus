@@ -136,6 +136,29 @@ class HookBusTest extends TestCase
         $this->assertSame($handler2, $handlers['actionCartUpdate']);
     }
 
+    public function testDispatchWhenHandlerNotFound()
+    {
+        $hookBus = new HookBus();
+
+        $result = $hookBus->dispatch('nonExistentHook', ['param1' => 'value1']);
+
+        $this->assertNull($result);
+    }
+
+    public function testDispatchWhenHandlerFound()
+    {
+        $hookBus = new HookBus();
+
+        $handler = $this->createMockHandler('actionProductSave');
+        $handler->method('handle')->willReturn('handled');
+
+        $hookBus->addHandler($handler);
+
+        $result = $hookBus->dispatch('actionProductSave', ['param1' => 'value1']);
+
+        $this->assertSame('handled', $result);
+    }
+
     /**
      * @param string $hookName
      *
