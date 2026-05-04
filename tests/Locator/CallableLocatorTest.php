@@ -1,6 +1,6 @@
 <?php
 
-namespace RubenMartinDev\PrestashopModuleHookBus\Tests\Unit\Locator;
+namespace RubenMartinDev\PrestashopModuleHookBus\Tests\Locator;
 
 use RubenMartinDev\PrestashopModuleHookBus\Locator\CallableLocator;
 use RubenMartinDev\PrestashopModuleHookBus\Locator\Exception\MissingHandlerException;

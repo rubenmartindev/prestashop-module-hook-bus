@@ -1,6 +1,6 @@
 <?php
 
-namespace RubenMartinDev\PrestashopModuleHookBus\Tests\Unit\Locator;
+namespace RubenMartinDev\PrestashopModuleHookBus\Tests\Locator;
 
 use RubenMartinDev\PrestashopModuleHookBus\Handler\HookHandlerInterface;
 use RubenMartinDev\PrestashopModuleHookBus\Locator\ArrayLocator;

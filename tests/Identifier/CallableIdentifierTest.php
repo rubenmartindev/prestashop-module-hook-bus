@@ -1,6 +1,6 @@
 <?php
 
-namespace RubenMartinDev\PrestashopModuleHookBus\Tests\Unit\Identifier;
+namespace RubenMartinDev\PrestashopModuleHookBus\Tests\Identifier;
 
 use PHPUnit\Framework\TestCase;
 use RubenMartinDev\PrestashopModuleHookBus\Identifier\CallableIdentifier;

@@ -1,6 +1,6 @@
 <?php
 
-namespace RubenMartinDev\PrestashopModuleHookBus\Tests\Unit;
+namespace RubenMartinDev\PrestashopModuleHookBus\Tests;
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit_Framework_MockObject_MockObject;

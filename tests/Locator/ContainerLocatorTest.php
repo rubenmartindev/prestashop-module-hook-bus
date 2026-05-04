@@ -1,6 +1,6 @@
 <?php
 
-namespace RubenMartinDev\PrestashopModuleHookBus\Tests\Unit\Locator;
+namespace RubenMartinDev\PrestashopModuleHookBus\Tests\Locator;
 
 use Exception;
 use PHPUnit_Framework_MockObject_MockObject;
