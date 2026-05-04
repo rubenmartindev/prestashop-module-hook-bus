@@ -23,9 +23,9 @@ class ContainerLocator implements HandlerLocatorInterface, AppendableHandlerLoca
      *
      * @param string $serviceId
      */
-    public function addHandler($hookName, $serviceId)
+    public function addHandler($identity, $serviceId)
     {
-        $this->handlers[$hookName] = $serviceId;
+        $this->handlers[$identity] = $serviceId;
 
         return $this;
     }
@@ -33,12 +33,12 @@ class ContainerLocator implements HandlerLocatorInterface, AppendableHandlerLoca
     /**
      * {@inheritDoc}
      */
-    public function getHandlerForHook($hookName)
+    public function getHandlerForIdentity($identity)
     {
-        if (!isset($this->handlers[$hookName])) {
-            throw MissingHandlerException::forHook($hookName);
+        if (!isset($this->handlers[$identity])) {
+            throw MissingHandlerException::forIdentity($identity);
         }
 
-        return $this->container->get($this->handlers[$hookName]);
+        return $this->container->get($this->handlers[$identity]);
     }
 }

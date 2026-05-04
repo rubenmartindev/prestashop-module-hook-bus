@@ -8,13 +8,13 @@ use RubenMartinDev\PrestashopModuleHookBus\Locator\Exception\MissingHandlerExcep
 interface HandlerLocatorInterface
 {
     /**
-     * Retrieves the handler for a specified hook
+     * Retrieves the handler for a specified identity
      *
-     * @param string $hookName
+     * @param string $identity
      *
      * @return HookHandlerInterface
      *
      * @throws MissingHandlerException
      */
-    public function getHandlerForHook($hookName);
+    public function getHandlerForIdentity($identity);
 }

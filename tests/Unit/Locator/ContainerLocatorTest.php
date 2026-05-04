@@ -16,13 +16,13 @@ class ContainerLocatorTest extends AbstractLocatorTestCase
     /** @var HookHandlerInterface */
     private $handler;
 
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
 
         $this->handler = $this->createHookHandlerMock();
 
-        /** @var ContainerInterface|PHPUnit_Framework_MockObject_MockObject */
+        /** @var ContainerInterface&PHPUnit_Framework_MockObject_MockObject */
         $container = $this->createMock(ContainerInterface::class);
 
         $container->method('get')->willReturnCallback(function ($serviceId) {
@@ -40,20 +40,20 @@ class ContainerLocatorTest extends AbstractLocatorTestCase
     {
         $this->locator->addHandler('displayHeader', get_class($this->handler));
 
-        $this->assertSame($this->handler, $this->locator->getHandlerForHook('displayHeader'));
+        $this->assertSame($this->handler, $this->locator->getHandlerForIdentity('displayHeader'));
     }
 
-    public function testGetHandlerForHookThrowsExceptionWhenNotFound()
+    public function testGetHandlerForIdentityThrowsExceptionWhenNotFound()
     {
         $this->expectException(Exception::class);
 
-        $this->locator->getHandlerForHook('nonExistentHook');
+        $this->locator->getHandlerForIdentity('nonExistentHook');
     }
 
-    public function testGetHandlerForHookReturnsHookHandlerWhenFound()
+    public function testGetHandlerForIdentityReturnsHandlerWhenFound()
     {
         $this->locator->addHandler('displayHeader', get_class($this->handler));
 
-        $this->assertSame($this->handler, $this->locator->getHandlerForHook('displayHeader'));
+        $this->assertSame($this->handler, $this->locator->getHandlerForIdentity('displayHeader'));
     }
 }

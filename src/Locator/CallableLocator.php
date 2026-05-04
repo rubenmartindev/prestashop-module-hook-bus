@@ -20,12 +20,12 @@ class CallableLocator implements HandlerLocatorInterface
     /**
      * {@inheritDoc}
      */
-    public function getHandlerForHook($hookName)
+    public function getHandlerForIdentity($identity)
     {
-        $handler = \call_user_func($this->callable, $hookName);
+        $handler = \call_user_func($this->callable, $identity);
 
         if (null === $handler) {
-            throw MissingHandlerException::forHook($hookName);
+            throw MissingHandlerException::forIdentity($identity);
         }
 
         return $handler;

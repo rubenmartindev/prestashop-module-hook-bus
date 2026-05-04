@@ -14,7 +14,7 @@ class CallableLocatorTest extends AbstractLocatorTestCase
     /** @var HookHandlerInterface */
     private $handler;
 
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
 
@@ -27,15 +27,15 @@ class CallableLocatorTest extends AbstractLocatorTestCase
         });
     }
 
-    public function testGetHandlerForHookThrowsExceptionWhenNotFound()
+    public function testGetHandlerForIdentifyThrowsExceptionWhenNotFound()
     {
         $this->expectException(MissingHandlerException::class);
 
-        $this->locator->getHandlerForHook('nonExistentHook');
+        $this->locator->getHandlerForIdentity('nonExistentIdentity');
     }
 
-    public function testGetHandlerForHookReturnsHookHandlerWhenFound()
+    public function testGetHandlerForIdentifyReturnsHandlerWhenFound()
     {
-        $this->assertSame($this->handler, $this->locator->getHandlerForHook('displayHeader'));
+        $this->assertSame($this->handler, $this->locator->getHandlerForIdentity('displayHeader'));
     }
 }

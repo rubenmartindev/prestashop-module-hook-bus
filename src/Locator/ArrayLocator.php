@@ -15,9 +15,9 @@ class ArrayLocator implements HandlerLocatorInterface, AppendableHandlerLocatorI
      *
      * @param HookHandlerInterface $handler
      */
-    public function addHandler($hookName, $handler)
+    public function addHandler($identity, $handler)
     {
-        $this->handlers[$hookName] = $handler;
+        $this->handlers[$identity] = $handler;
 
         return $this;
     }
@@ -25,12 +25,12 @@ class ArrayLocator implements HandlerLocatorInterface, AppendableHandlerLocatorI
     /**
      * {@inheritDoc}
      */
-    public function getHandlerForHook($hookName)
+    public function getHandlerForIdentity($identity)
     {
-        if (!isset($this->handlers[$hookName])) {
-            throw MissingHandlerException::forHook($hookName);
+        if (!isset($this->handlers[$identity])) {
+            throw MissingHandlerException::forIdentity($identity);
         }
 
-        return $this->handlers[$hookName];
+        return $this->handlers[$identity];
     }
 }

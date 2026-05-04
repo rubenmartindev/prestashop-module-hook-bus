@@ -14,7 +14,7 @@ class ArrayLocatorTest extends AbstractLocatorTestCase
     /** @var ArrayLocator */
     private $locator;
 
-    public function setUp()
+    protected function setUp()
     {
         parent::setup();
 
@@ -27,20 +27,20 @@ class ArrayLocatorTest extends AbstractLocatorTestCase
     {
         $this->locator->addHandler('displayHeader', $this->handler);
 
-        $this->assertSame($this->handler, $this->locator->getHandlerForHook('displayHeader'));
+        $this->assertSame($this->handler, $this->locator->getHandlerForIdentity('displayHeader'));
     }
 
-    public function testGetHandlerForHookThrowsExceptionWhenNotFound()
+    public function testGetHandlerForIdentityThrowsExceptionWhenNotFound()
     {
         $this->expectException(MissingHandlerException::class);
 
-        $this->locator->getHandlerForHook('nonExistentHook');
+        $this->locator->getHandlerForIdentity('nonExistentHook');
     }
 
-    public function testGetHandlerForHookReturnsHookHandlerWhenFound()
+    public function testGetHandlerForIdentityReturnsHandlerWhenFound()
     {
         $this->locator->addHandler('displayHeader', $this->handler);
 
-        $this->assertSame($this->handler, $this->locator->getHandlerForHook('displayHeader'));
+        $this->assertSame($this->handler, $this->locator->getHandlerForIdentity('displayHeader'));
     }
 }

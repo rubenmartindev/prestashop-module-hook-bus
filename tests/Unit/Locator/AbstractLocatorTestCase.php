@@ -9,7 +9,7 @@ use RubenMartinDev\PrestashopModuleHookBus\Handler\HookHandlerInterface;
 abstract class AbstractLocatorTestCase extends TestCase
 {
     /**
-     * @return HookHandlerInterface|PHPUnit_Framework_MockObject_MockObject
+     * @return HookHandlerInterface&PHPUnit_Framework_MockObject_MockObject
      */
     protected function createHookHandlerMock()
     {

@@ -7,18 +7,18 @@ use RubenMartinDev\PrestashopModuleHookBus\Exception\HookBusException;
 class MissingHandlerException extends HookBusException
 {
     /** @var string */
-    private $hookName;
+    private $identity;
 
     /**
-     * @param string $hookName
+     * @param string $identity
      *
      * @return static
      */
-    public static function forHook($hookName)
+    public static function forIdentity($identity)
     {
-        $exception = new static(\sprintf('Missing handler for hook %s', $hookName));
+        $exception = new static(\sprintf('No handlers registered for identity hook [%s]', $identity));
 
-        $exception->hookName = $hookName;
+        $exception->identity = $identity;
 
         return $exception;
     }
@@ -26,8 +26,8 @@ class MissingHandlerException extends HookBusException
     /**
      * @return string
      */
-    public function getHookName()
+    public function getIdentity()
     {
-        return $this->hookName;
+        return $this->identity;
     }
 }

@@ -5,10 +5,10 @@ namespace RubenMartinDev\PrestashopModuleHookBus\Locator;
 interface AppendableHandlerLocatorInterface
 {
     /**
-     * @param string $hookName
+     * @param string $identity
      * @param mixed $handler
      *
      * @return static
      */
-    public function addHandler($hookName, $handler);
+    public function addHandler($identity, $handler);
 }

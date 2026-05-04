@@ -2,16 +2,22 @@
 
 namespace RubenMartinDev\PrestashopModuleHookBus;
 
+use RubenMartinDev\PrestashopModuleHookBus\Identifier\HookIdentifierInterface;
 use RubenMartinDev\PrestashopModuleHookBus\Locator\HandlerLocatorInterface;
 
 class HookBus implements HookBusInterface
 {
+    /** @var HookIdentifierInterface */
+    private $hookIdentifier;
+
     /** @var HandlerLocatorInterface */
     private $handlerLocator;
 
     public function __construct(
+        HookIdentifierInterface $hookIdentifier,
         HandlerLocatorInterface $handlerLocator
     ) {
+        $this->hookIdentifier = $hookIdentifier;
         $this->handlerLocator = $handlerLocator;
     }
 
@@ -20,7 +26,9 @@ class HookBus implements HookBusInterface
      */
     public function dispatch($hookName, array $params = [])
     {
-        $handler = $this->handlerLocator->getHandlerForHook($hookName);
+        $handler = $this->handlerLocator->getHandlerForIdentity(
+            $this->hookIdentifier->identify($hookName)
+        );
 
         return $handler->handle($params);
     }

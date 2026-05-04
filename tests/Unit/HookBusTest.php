@@ -6,22 +6,25 @@ use PHPUnit\Framework\TestCase;
 use PHPUnit_Framework_MockObject_MockObject;
 use RubenMartinDev\PrestashopModuleHookBus\Handler\HookHandlerInterface;
 use RubenMartinDev\PrestashopModuleHookBus\HookBus;
+use RubenMartinDev\PrestashopModuleHookBus\Identifier\HookIdentifierInterface;
 use RubenMartinDev\PrestashopModuleHookBus\Locator\HandlerLocatorInterface;
 
 class HookBusTest extends TestCase
 {
     public function testDispatch()
     {
-        $handler = $this->createMock(HookHandlerInterface::class);
+        /** @var HookIdentifierInterface&PHPUnit_Framework_MockObject_MockObject */
+        $identifier = $this->createMock(HookIdentifierInterface::class);
+        $identifier->method('identify')->willReturn('displayHeader');
 
+        $handler = $this->createMock(HookHandlerInterface::class);
         $handler->method('handle')->willReturn('dispatched');
 
         /** @var HandlerLocatorInterface&PHPUnit_Framework_MockObject_MockObject */
         $locator = $this->createMock(HandlerLocatorInterface::class);
+        $locator->method('getHandlerForIdentity')->willReturn($handler);
 
-        $locator->method('getHandlerForHook')->willReturn($handler);
-
-        $hookBus = new HookBus($locator);
+        $hookBus = new HookBus($identifier, $locator);
 
         $result = $hookBus->dispatch('displayHeader', ['param1' => 'value1']);
 
