@@ -2,6 +2,8 @@
 
 namespace RubenMartinDev\PrestashopModuleHookBus\Identifier;
 
+use RubenMartinDev\PrestashopModuleHookBus\Identifier\Exception\UnresolvedHookIdentifierException;
+
 interface HookIdentifierInterface
 {
     /**
