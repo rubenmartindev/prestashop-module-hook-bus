@@ -5,7 +5,7 @@ namespace RubenMartinDev\PrestashopModuleHookBus\Locator;
 use Psr\Container\ContainerInterface;
 use RubenMartinDev\PrestashopModuleHookBus\Locator\Exception\MissingHandlerException;
 
-class ContainerLocator implements HandlerLocatorInterface, AppendableHandlerLocatorInterface
+class ContainerLocator implements AppendableHandlerLocatorInterface
 {
     /** @var ContainerInterface */
     private $container;

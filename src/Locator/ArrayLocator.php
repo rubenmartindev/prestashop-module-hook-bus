@@ -5,7 +5,7 @@ namespace RubenMartinDev\PrestashopModuleHookBus\Locator;
 use RubenMartinDev\PrestashopModuleHookBus\Handler\HookHandlerInterface;
 use RubenMartinDev\PrestashopModuleHookBus\Locator\Exception\MissingHandlerException;
 
-class ArrayLocator implements HandlerLocatorInterface, AppendableHandlerLocatorInterface
+class ArrayLocator implements AppendableHandlerLocatorInterface
 {
     /** @var array<string, object> */
     private $handlers = [];
