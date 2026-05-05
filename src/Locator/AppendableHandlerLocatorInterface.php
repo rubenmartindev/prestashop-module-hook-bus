@@ -2,7 +2,7 @@
 
 namespace RubenMartinDev\PrestashopModuleHookBus\Locator;
 
-interface AppendableHandlerLocatorInterface
+interface AppendableHandlerLocatorInterface extends HandlerLocatorInterface
 {
     /**
      * @param string $identity

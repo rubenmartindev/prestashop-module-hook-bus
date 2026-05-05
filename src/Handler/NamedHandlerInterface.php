@@ -2,7 +2,7 @@
 
 namespace RubenMartinDev\PrestashopModuleHookBus\Handler;
 
-interface NamedHandlerInterface
+interface NamedHandlerInterface extends HookHandlerInterface
 {
     /**
      * Returns the name of the hook
