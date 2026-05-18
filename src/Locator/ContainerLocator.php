@@ -2,8 +2,8 @@
 
 namespace RubenMartinDev\PrestashopModuleHookBus\Locator;
 
-use Psr\Container\ContainerInterface;
 use RubenMartinDev\PrestashopModuleHookBus\Locator\Exception\MissingHandlerException;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class ContainerLocator implements AppendableHandlerLocatorInterface
 {

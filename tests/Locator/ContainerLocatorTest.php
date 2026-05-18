@@ -4,7 +4,7 @@ namespace RubenMartinDev\PrestashopModuleHookBus\Tests\Locator;
 
 use Exception;
 use PHPUnit_Framework_MockObject_MockObject;
-use Psr\Container\ContainerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use RubenMartinDev\PrestashopModuleHookBus\Handler\HookHandlerInterface;
 use RubenMartinDev\PrestashopModuleHookBus\Locator\ContainerLocator;
 

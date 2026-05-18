@@ -2,7 +2,6 @@
 
 namespace RubenMartinDev\PrestashopModuleHookBus;
 
-use Psr\Container\ContainerInterface;
 use RubenMartinDev\PrestashopModuleHookBus\Handler\HookHandlerInterface;
 use RubenMartinDev\PrestashopModuleHookBus\Handler\NamedHandlerInterface;
 use RubenMartinDev\PrestashopModuleHookBus\Identifier\HookIdentifierInterface;
@@ -11,6 +10,7 @@ use RubenMartinDev\PrestashopModuleHookBus\Locator\ArrayLocator;
 use RubenMartinDev\PrestashopModuleHookBus\Locator\CallableLocator;
 use RubenMartinDev\PrestashopModuleHookBus\Locator\ContainerLocator;
 use RubenMartinDev\PrestashopModuleHookBus\Locator\HandlerLocatorInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class HookBusFactory
 {

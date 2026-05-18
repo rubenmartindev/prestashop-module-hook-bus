@@ -4,7 +4,7 @@ namespace RubenMartinDev\PrestashopModuleHookBus\Tests;
 
 use PHPUnit_Framework_MockObject_MockObject;
 use PHPUnit\Framework\TestCase;
-use Psr\Container\ContainerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use RubenMartinDev\PrestashopModuleHookBus\Handler\HookHandlerInterface;
 use RubenMartinDev\PrestashopModuleHookBus\HookBusFactory;
 use RubenMartinDev\PrestashopModuleHookBus\HookBusInterface;
