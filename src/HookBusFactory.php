@@ -5,7 +5,6 @@ namespace RubenMartinDev\PrestashopModuleHookBus;
 use RubenMartinDev\PrestashopModuleHookBus\Handler\HookHandlerInterface;
 use RubenMartinDev\PrestashopModuleHookBus\Handler\NamedHandlerInterface;
 use RubenMartinDev\PrestashopModuleHookBus\Identifier\HookIdentifierInterface;
-use RubenMartinDev\PrestashopModuleHookBus\Identifier\LiteralIdentifier;
 use RubenMartinDev\PrestashopModuleHookBus\Locator\ArrayLocator;
 use RubenMartinDev\PrestashopModuleHookBus\Locator\CallableLocator;
 use RubenMartinDev\PrestashopModuleHookBus\Locator\ContainerLocator;
@@ -35,7 +34,7 @@ class HookBusFactory
      */
     public static function createWithArray(
         $handlers,
-        $hookIdentifier = LiteralIdentifier::class
+        $hookIdentifier
     ) {
         $arrayLocator = new ArrayLocator();
 
@@ -49,7 +48,7 @@ class HookBusFactory
         }
 
         return self::create(
-            new $hookIdentifier,
+            $hookIdentifier,
             $arrayLocator
         );
     }
@@ -62,10 +61,10 @@ class HookBusFactory
      */
     public static function createWithCallable(
         callable $callable,
-        $hookIdentifier = LiteralIdentifier::class
+        $hookIdentifier
     ) {
         return self::create(
-            new $hookIdentifier,
+            $hookIdentifier,
             new CallableLocator($callable)
         );
     }
@@ -80,7 +79,7 @@ class HookBusFactory
     public static function createWithContainer(
         ContainerInterface $container,
         $handlers,
-        $hookIdentifier = LiteralIdentifier::class
+        $hookIdentifier
     ) {
         $containerLocator = new ContainerLocator($container);
 
@@ -94,7 +93,7 @@ class HookBusFactory
         }
 
         return self::create(
-            new $hookIdentifier,
+            $hookIdentifier,
             $containerLocator
         );
     }

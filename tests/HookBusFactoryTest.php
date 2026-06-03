@@ -4,12 +4,13 @@ namespace RubenMartinDev\PrestashopModuleHookBus\Tests;
 
 use PHPUnit_Framework_MockObject_MockObject;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use RubenMartinDev\PrestashopModuleHookBus\Handler\HookHandlerInterface;
 use RubenMartinDev\PrestashopModuleHookBus\HookBusFactory;
 use RubenMartinDev\PrestashopModuleHookBus\HookBusInterface;
 use RubenMartinDev\PrestashopModuleHookBus\Identifier\HookIdentifierInterface;
+use RubenMartinDev\PrestashopModuleHookBus\Identifier\LiteralIdentifier;
 use RubenMartinDev\PrestashopModuleHookBus\Locator\HandlerLocatorInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class HookBusFactoryTest extends TestCase
 {
@@ -43,7 +44,8 @@ class HookBusFactoryTest extends TestCase
     public function testCreateWithArrayReturnsHookBusWithoutHookIdentifier()
     {
         $hookBus = HookBusFactory::createWithArray(
-            ['displayHeader' => $this->hookHandler]
+            ['displayHeader' => $this->hookHandler],
+            new LiteralIdentifier()
         );
 
         $this->assertInstanceOf(HookBusInterface::class, $hookBus);
@@ -61,9 +63,12 @@ class HookBusFactoryTest extends TestCase
 
     public function testCreateWithCallableReturnsHookBusWithoutHookIdentifier()
     {
-        $hookBus = HookBusFactory::createWithCallable(function () {
-            return $this->hookHandler;
-        });
+        $hookBus = HookBusFactory::createWithCallable(
+            function () {
+                return $this->hookHandler;
+            },
+            new LiteralIdentifier()
+        );
 
         $this->assertInstanceOf(HookBusInterface::class, $hookBus);
     }
@@ -87,7 +92,8 @@ class HookBusFactoryTest extends TestCase
 
         $hookBus = HookBusFactory::createWithContainer(
             $container,
-            ['hook.handler.displayHeader']
+            ['hook.handler.displayHeader'],
+            new LiteralIdentifier()
         );
 
         $this->assertInstanceOf(HookBusInterface::class, $hookBus);
