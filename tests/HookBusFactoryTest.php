@@ -44,8 +44,8 @@ class HookBusFactoryTest extends TestCase
     public function testCreateWithArrayReturnsHookBusWithoutHookIdentifier()
     {
         $hookBus = HookBusFactory::createWithArray(
-            ['displayHeader' => $this->hookHandler],
-            new LiteralIdentifier()
+            new LiteralIdentifier(),
+            ['displayHeader' => $this->hookHandler]
         );
 
         $this->assertInstanceOf(HookBusInterface::class, $hookBus);
@@ -54,8 +54,8 @@ class HookBusFactoryTest extends TestCase
     public function testCreateWithArrayReturnsHookBusWithIdentifier()
     {
         $hookBus = HookBusFactory::createWithArray(
-            ['displayHeader' => $this->hookHandler],
-            $this->hookIdentifier
+            $this->hookIdentifier,
+            ['displayHeader' => $this->hookHandler]
         );
 
         $this->assertInstanceOf(HookBusInterface::class, $hookBus);
@@ -64,10 +64,10 @@ class HookBusFactoryTest extends TestCase
     public function testCreateWithCallableReturnsHookBusWithoutHookIdentifier()
     {
         $hookBus = HookBusFactory::createWithCallable(
+            new LiteralIdentifier(),
             function () {
                 return $this->hookHandler;
-            },
-            new LiteralIdentifier()
+            }
         );
 
         $this->assertInstanceOf(HookBusInterface::class, $hookBus);
@@ -76,10 +76,10 @@ class HookBusFactoryTest extends TestCase
     public function testCreateWithCallableReturnsHookBusWithIdentifier()
     {
         $hookBus = HookBusFactory::createWithCallable(
+            $this->hookIdentifier,
             function () {
                 return $this->hookHandler;
-            },
-            $this->hookIdentifier
+            }
         );
 
         $this->assertInstanceOf(HookBusInterface::class, $hookBus);
@@ -92,8 +92,8 @@ class HookBusFactoryTest extends TestCase
 
         $hookBus = HookBusFactory::createWithContainer(
             $container,
-            ['hook.handler.displayHeader'],
-            new LiteralIdentifier()
+            new LiteralIdentifier(),
+            ['hook.handler.displayHeader']
         );
 
         $this->assertInstanceOf(HookBusInterface::class, $hookBus);
@@ -106,8 +106,8 @@ class HookBusFactoryTest extends TestCase
 
         $hookBus = HookBusFactory::createWithContainer(
             $container,
-            ['hook.handler.displayHeader'],
-            $this->hookIdentifier
+            $this->hookIdentifier,
+            ['hook.handler.displayHeader']
         );
 
         $this->assertInstanceOf(HookBusInterface::class, $hookBus);

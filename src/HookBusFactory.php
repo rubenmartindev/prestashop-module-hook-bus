@@ -27,14 +27,14 @@ class HookBusFactory
     }
 
     /**
-     * @param iterable<HookHandlerInterface> $handlers
      * @param HookIdentifierInterface $hookIdentifier
+     * @param iterable<string, HookHandlerInterface> $handlers
      *
      * @return HookBusInterface
      */
     public static function createWithArray(
-        $handlers,
-        $hookIdentifier
+        $hookIdentifier,
+        $handlers
     ) {
         $arrayLocator = new ArrayLocator();
 
@@ -54,14 +54,14 @@ class HookBusFactory
     }
 
     /**
-     * @param callable $callable
      * @param HookIdentifierInterface $hookIdentifier
+     * @param callable $callable
      *
      * @return HookBusInterface
      */
     public static function createWithCallable(
-        callable $callable,
-        $hookIdentifier
+        $hookIdentifier,
+        callable $callable
     ) {
         return self::create(
             $hookIdentifier,
@@ -71,15 +71,15 @@ class HookBusFactory
 
     /**
      * @param ContainerInterface $container
-     * @param string[] $handlers
      * @param HookIdentifierInterface $hookIdentifier
+     * @param array<string, string> $handlers
      *
      * @return HookBusInterface
      */
     public static function createWithContainer(
         ContainerInterface $container,
-        $handlers,
-        $hookIdentifier
+        $hookIdentifier,
+        $handlers
     ) {
         $containerLocator = new ContainerLocator($container);
 
