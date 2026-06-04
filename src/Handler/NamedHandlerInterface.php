@@ -5,9 +5,9 @@ namespace RubenMartinDev\PrestashopModuleHookBus\Handler;
 interface NamedHandlerInterface extends HookHandlerInterface
 {
     /**
-     * Returns the name of the hook
+     * Returns the name of the identity
      *
      * @return string
      */
-    public static function getHookName();
+    public static function getIdentityName();
 }

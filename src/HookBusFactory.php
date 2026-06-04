@@ -41,7 +41,7 @@ class HookBusFactory
         foreach ($handlers as $identity => $handler) {
             if ($identity instanceof NamedHandlerInterface) {
                 /** @var NamedHandlerInterface $handler */
-                $identity = $handler::getHookName();
+                $identity = $handler::getIdentityName();
             }
 
             $arrayLocator->addHandler($identity, $handler);
@@ -86,7 +86,7 @@ class HookBusFactory
         foreach ($handlers as $identity => $serviceId) {
             if (\is_subclass_of($serviceId, NamedHandlerInterface::class)) {
                 /** @var NamedHandlerInterface $serviceId */
-                $identity = $serviceId::getHookName();
+                $identity = $serviceId::getIdentityName();
             }
 
             $containerLocator->addHandler($identity, $serviceId);
