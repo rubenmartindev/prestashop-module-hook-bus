@@ -1,7 +1,7 @@
 {
     "name": "rubenmartindev/prestashop-module-hook-bus",
-    "description": "Hook bus for PrestaShop modules",
-    "keywords": ["prestashop", "hooks", "modules"],
+    "description": "Flexible and centralized way to route and handle PrestaShop hooks",
+    "keywords": ["prestashop", "hooks", "modules", "bus", "handlers"],
     "license": "MIT",
     "type": "library",
     "authors": [
