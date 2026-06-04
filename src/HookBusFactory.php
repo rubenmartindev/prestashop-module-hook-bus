@@ -39,7 +39,7 @@ class HookBusFactory
         $arrayLocator = new ArrayLocator();
 
         foreach ($handlers as $identity => $handler) {
-            if ($identity instanceof NamedHandlerInterface) {
+            if ($handler instanceof NamedHandlerInterface) {
                 /** @var NamedHandlerInterface $handler */
                 $identity = $handler::getIdentityName();
             }
