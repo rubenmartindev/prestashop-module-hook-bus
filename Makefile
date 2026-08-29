@@ -1,12 +1,12 @@
 -include .env
 export
 
-HOST_UID      ?= $(shell id -u)
-HOST_GID      ?= $(shell id -g)
-PS_VERSION    ?= 9
-PS_HTTP_PORT  ?= 80
+HOST_UID        ?= $(shell id -u)
+HOST_GID        ?= $(shell id -g)
+PS_VERSION_TAG  ?= 9
+PS_HTTP_PORT    ?= 80
 
-COMPOSE_PROJECT_NAME  := prestashop-module-hook-bus-$(subst .,-,$(PS_VERSION))
+COMPOSE_PROJECT_NAME  := prestashop-module-hook-bus-$(subst .,-,$(PS_VERSION_TAG))
 COMPOSE               := docker compose --project-name $(COMPOSE_PROJECT_NAME)
 
 ARGS = $(filter-out $@, $(MAKECMDGOALS))

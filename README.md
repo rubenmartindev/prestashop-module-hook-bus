@@ -448,7 +448,7 @@ All library exceptions extend `HookBusException`.
 
 The repository includes a Docker Compose environment for working with a
 specific PrestaShop version. The PrestaShop core is mounted in
-`prestashop/<PS_VERSION>` so it can be inspected and modified locally.
+`prestashop/<PS_VERSION_TAG>` so it can be inspected and modified locally.
 Those installation files are ignored by Git.
 
 Copy the environment template and start the default instance:
@@ -458,19 +458,19 @@ cp .env.dist .env
 make up
 ```
 
-The Compose project name is generated from `PS_VERSION`. Different versions
+The Compose project name is generated from `PS_VERSION_TAG`. Different versions
 can run simultaneously when using different host ports:
 
 ```bash
-make up PS_VERSION=1.6 PS_HTTP_PORT=8080
-make up PS_VERSION=9 PS_HTTP_PORT=8090
+make up PS_VERSION_TAG=1.6 PS_HTTP_PORT=8080
+make up PS_VERSION_TAG=9 PS_HTTP_PORT=8090
 ```
 
 Manage an instance by passing its version again:
 
 ```bash
-make logs PS_VERSION=1.6
-make down PS_VERSION=1.6
+make logs PS_VERSION_TAG=1.6
+make down PS_VERSION_TAG=1.6
 ```
 
 Additional Docker Compose options can be passed after `--`. Instance variables
@@ -482,7 +482,7 @@ can still be provided through `.env`, the environment, or directly on the
 make down -- --volumes
 
 # Recreate a specific PrestaShop instance
-make up PS_VERSION=9 PS_HTTP_PORT=8090 -- --force-recreate
+make up PS_VERSION_TAG=9 PS_HTTP_PORT=8090 -- --force-recreate
 
 # Show the last 100 log lines
 make logs -- --tail 100
@@ -491,4 +491,4 @@ make logs -- --tail 100
 make ps -- prestashop
 ```
 
-The database image is MySQL and its version can be changed with `DB_VERSION`.
+The database image is MySQL and its tag can be changed with `DB_VERSION_TAG`.
