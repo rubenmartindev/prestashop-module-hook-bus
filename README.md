@@ -492,3 +492,20 @@ make ps -- prestashop
 ```
 
 The database image is MySQL and its tag can be changed with `DB_VERSION_TAG`.
+
+The development image also includes a `hookbusdemo` fixture module. It is
+mounted as a regular PrestaShop module and requires the library from the
+repository through a Composer path repository. The repository root is mounted
+at `/workspace/prestashop-module-hook-bus`, so changes to `src/` are available
+immediately in the fixture.
+
+Composer installs the fixture dependencies on startup. The fixture's
+`composer.lock` and `vendor/` are local files and are not versioned. The
+library tests can be run from the container shell:
+
+```bash
+make shell PS_VERSION_TAG=9
+cd /workspace/prestashop-module-hook-bus
+composer tests
+composer cs
+```

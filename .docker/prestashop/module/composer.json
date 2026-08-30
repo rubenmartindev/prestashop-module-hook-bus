@@ -1,0 +1,31 @@
+{
+    "name": "rubenmartindev/prestashop-module-hook-bus-fixture",
+    "description": "Development fixture for PrestaShop Module Hook Bus",
+    "type": "project",
+    "require": {
+        "php": ">=5.6.0",
+        "rubenmartindev/prestashop-module-hook-bus": "dev-local"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/workspace/prestashop-module-hook-bus",
+            "options": {
+                "symlink": true,
+                "versions": {
+                    "rubenmartindev/prestashop-module-hook-bus": "dev-local"
+                }
+            }
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "HookBusDemo\\": "src/"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "5.6.0"
+        }
+    }
+}
